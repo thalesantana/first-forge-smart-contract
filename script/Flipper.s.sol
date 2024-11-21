@@ -2,18 +2,17 @@
 pragma solidity ^0.8.28;
 
 import {Script, console} from "forge-std/Script.sol";
-import {Counter} from "../src/Counter.sol";
+import {Flipper} from "../src/Flipper.sol";
 
-contract CounterScript is Script {
-    Counter public counter;
-
-    function setUp() public {}
+contract Deploy is Script {
+    Flipper public flipper;
 
     function run() public {
         vm.startBroadcast();
 
-        counter = new Counter();
+        flipper = new Flipper(false);
 
+        console.log("Flipper address: ", address(flipper));
         vm.stopBroadcast();
     }
 }
